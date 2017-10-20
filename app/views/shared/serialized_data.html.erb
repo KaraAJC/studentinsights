@@ -1,5 +1,2 @@
 <div id="main"></div>
 <%= json_div(id: "serialized-data", data: @serialized_data) %>
-<% if @load_spa %>
-  <%= javascript_include_tag 'spa/index', 'data-turbolinks-track' => false %>
-<% end %>

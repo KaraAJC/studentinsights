@@ -58,7 +58,7 @@ class StudentsController < ApplicationController
   def show
     student = Student.find(params[:id])
     @serialized_data = show_data(student)
-    @load_spa = true; render 'shared/serialized_data'
+    render 'shared/serialized_data'
   end
 
   def show_json
