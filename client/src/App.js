@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
-import Loader from './Loader.js';
-import PageContainer from './student/PageContainer.js';
-import qs from 'query-string';
+import Main from './student/Main.js';
+import miniRouter from './util/miniRouter.js';
 
+
+// [{key, route}]
+const miniRoutes = [
+  { key: 'student', route: { path: '/students/:studentId', exact: true, strict: true } }
+];
+
+// concerns:
+//   auth
+//   routing (and analytics on route change)
 class App extends Component {
-  fetch() {
-    return fetch('/students/1/show_json/')
-      .then(r => r.json());
-  }
-
   render() {
-    return (
-      <div className="App">
-        <Loader promiseFn={this.fetch} isRenderFn={true}>
-          {(dataP) =>
-            <div>
-              {(dataP.isPending || dataP.reject) && <pre>{JSON.stringify(dataP, null, 2)}</pre>}
-              {(!dataP.isPending && dataP.resolve) && this.renderData(dataP.resolve)}
-            </div>
-          }
-        </Loader>
-      </div>
-    );
+    // TODO(kr) auth and educator loading
+
+    // Determine route
+    const branch = miniRouter(window.location, miniRoutes);
+    if (branch === null) return null;
+
+    // Render
+    // TODO(kr) needs analytics sink on page views and changes
+    const {routeKey} = branch;
+    if (routeKey === 'student') return this.renderStudent(branch);
+    return null;
   }
 
-  renderData(serializedData) {
+  // Mixpanel.registerUser(serializedData.currentEducator);
+  // Mixpanel.track('PAGE_VISIT', { page_key: 'STUDENT_PROFILE' });
+  renderStudent(branch) {
+    const {routeParams, queryParams} = branch;
+    const history = window.history;
+    console.log('renderStudent');
     return (
-      <PageContainer
-        nowMomentFn={() => 'foo'}
-        serializedData={serializedData}
-        queryParams={qs.parse(window.location.search)}
-        history={window.history} />
+      <Main
+        studentId={parseInt(routeParams.studentId, 10)}
+        queryParams={queryParams}
+        history={history} />
     );
   }
 }

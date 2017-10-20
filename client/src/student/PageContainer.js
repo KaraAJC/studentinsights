@@ -9,15 +9,19 @@ import merge from '../util/merge.js';
 import fromPair from '../util/fromPair.js';
 import StudentProfilePage from './StudentProfilePage.js';
 
-// BROKEN(kr) moment import from yarn
+// BROKEN(kr) mixpanel page view analytics
 // BEFORE(kr) import/export
 // BEFORE(kr) create-react-class codemod
+// BEFORE(kr) switch JS loading to use matchPath, not body classes
+// DEFER but PLAN(kr) router to start
+
 // FUTURE(kr) PageContainer: lodash version 4 update (fromPair, merge)
 // TEST(kr) Api.js: test change from $.ajax to fetch
 // TEST(kr) Routes: studentProfile query string
 // TEST(kr) App: qs.parse change
 // TEST(kr) Api changed to ES6 class
 // TEST(kr) Api change to Mixpanel#registerUser, requiring explicit Env
+// TEST(kr) Main: moment package
 
 // Holds page state, makes API calls to manipulate it.
 class PageContainer extends React.Component {

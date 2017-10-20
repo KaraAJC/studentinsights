@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 
 function promiseState() {
   return {
@@ -52,9 +50,5 @@ class Loader extends Component {
     }
   }
 }
-Loader.propTypes = {
-  promiseFn: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired
-};
 
 export default Loader;
