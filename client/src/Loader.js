@@ -54,7 +54,8 @@ class Loader extends Component {
 }
 Loader.propTypes = {
   promiseFn: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  isRenderFn: PropTypes.bool
 };
 
 export default Loader;

@@ -31,7 +31,6 @@ class App extends Component {
   renderStudent(branch) {
     const {routeParams, queryParams} = branch;
     const history = window.history;
-    console.log('renderStudent');
     return (
       <Main
         studentId={parseInt(routeParams.studentId, 10)}

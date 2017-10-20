@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
-import Mixpanel from '../util/Mixpanel.js';
+import PropTypes from 'prop-types';
 import customPropTypes from '../util/customPropTypes';
+import Mixpanel from '../util/Mixpanel.js';
 import Api from './Api.js';
 import Routes from '../util/Routes.js';
 import merge from '../util/merge.js';
@@ -22,6 +22,7 @@ import StudentProfilePage from './StudentProfilePage.js';
 // TEST(kr) Api changed to ES6 class
 // TEST(kr) Api change to Mixpanel#registerUser, requiring explicit Env
 // TEST(kr) Main: moment package
+// TEST(kr) StudentProfileHeader: elevate RiskBubble to component
 
 // Holds page state, makes API calls to manipulate it.
 class PageContainer extends React.Component {
