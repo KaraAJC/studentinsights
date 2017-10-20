@@ -13,6 +13,7 @@ import StudentProfilePage from './StudentProfilePage.js';
 // BEFORE(kr) import/export
 // BEFORE(kr) create-react-class codemod
 // BEFORE(kr) switch JS loading to use matchPath, not body classes
+// BEFORE(kr) wrap calls to pushState
 // DEFER but PLAN(kr) router to start
 
 // FUTURE(kr) PageContainer: lodash version 4 update (fromPair, merge)
@@ -26,7 +27,8 @@ import StudentProfilePage from './StudentProfilePage.js';
 
 // TEST(kr) spa.html.erb, cruft warnings for demo site, logging out, calendar
 // TEST(kr) routing for SPA
-
+// TEST(kr) when rails including:
+//    socket-io doesn't work, have to remove proxy
 // Holds page state, makes API calls to manipulate it.
 class PageContainer extends React.Component {
   constructor(props) {
