@@ -24,6 +24,9 @@ import StudentProfilePage from './StudentProfilePage.js';
 // TEST(kr) Main: moment package
 // TEST(kr) StudentProfileHeader: elevate RiskBubble to component
 
+// TEST(kr) spa.html.erb, cruft warnings for demo site, logging out, calendar
+// TEST(kr) routing for SPA
+
 // Holds page state, makes API calls to manipulate it.
 class PageContainer extends React.Component {
   constructor(props) {

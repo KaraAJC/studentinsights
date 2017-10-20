@@ -5,7 +5,7 @@ import miniRouter from './util/miniRouter.js';
 
 // [{key, route}]
 const miniRoutes = [
-  { key: 'student', route: { path: '/students/:studentId', exact: true, strict: true } }
+  { key: 'student', route: { path: '/students/:studentId/show_spa', exact: true, strict: true } }
 ];
 
 // concerns:

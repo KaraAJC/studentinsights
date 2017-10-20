@@ -63,7 +63,21 @@ class StudentsController < ApplicationController
 
   def show_json
     student = Student.find(params[:id])
-    render :json => show_data(student)
+    render json: show_data(student)
+  end
+
+  def spa
+    # production, easiest and can do statically at load time
+    built_js_files = Dir.glob('public/client-build/static/js/*.js')
+    raise 'oh no' unless built_js_files.length == 1
+    pathname = built_js_files.first
+    pieces = pathname.split('/')
+    @spa_script_src = '/' + pieces.slice(1, pieces.length).join('/')
+
+    # dev, another step
+    # TODO(kr)
+
+    render 'shared/spa', layout: false
   end
 
   def restricted_notes

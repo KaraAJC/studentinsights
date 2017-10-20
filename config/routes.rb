@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       post :service
       get :show_json
     end
+    get 'show_spa' => 'students#spa'
   end
   resources :services, only: [:destroy]
   resources :service_types, only: [:index]
