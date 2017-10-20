@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get :student_report
       get :restricted_notes
       post :service
+      get :show_json
     end
   end
   resources :services, only: [:destroy]

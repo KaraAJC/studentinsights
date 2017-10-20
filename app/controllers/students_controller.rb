@@ -3,14 +3,47 @@ class StudentsController < ApplicationController
 
   rescue_from Exceptions::EducatorNotAuthorized, with: :redirect_unauthorized!
 
-  before_action :authorize!, except: [          # The :names and lasids actions are subject to
-    :names, :lasids                             # educator authentication via :authenticate_educator!
-  ]                                             # inherited from ApplicationController.
-                                                # They then get further authorization filtering using
-                                                # The custom authorization methods below.
 
-  before_action :authorize_for_districtwide_access_admin, only: [:lasids]
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
 
+  # before_action :authorize!, except: [          # The :names and lasids actions are subject to
+  #   :names, :lasids                             # educator authentication via :authenticate_educator!
+  # ]                                             # inherited from ApplicationController.
+  #                                               # They then get further authorization filtering using
+  #                                               # The custom authorization methods below.
+
+  # before_action :authorize_for_districtwide_access_admin, only: [:lasids]
+
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+  
+
+
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+  
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+  
   def authorize!
     student = Student.find(params[:id])
     raise Exceptions::EducatorNotAuthorized unless current_educator.is_authorized_for_student(student)
@@ -24,28 +57,13 @@ class StudentsController < ApplicationController
 
   def show
     student = Student.find(params[:id])
-    chart_data = StudentProfileChart.new(student).chart_data
+    @serialized_data = show_data(student)
+    @load_spa = true; render 'shared/serialized_data'
+  end
 
-    @serialized_data = {
-      current_educator: current_educator,
-      student: serialize_student_for_profile(student),          # Risk level, school homeroom, most recent school year attendance/discipline counts
-      feed: student_feed(student, restricted_notes: false),     # Notes, services
-      chart_data: chart_data,                                   # STAR, MCAS, discipline, attendance charts
-      dibels: student.student_assessments.by_family('DIBELS'),
-      service_types_index: ServiceSerializer.service_types_index,
-      event_note_types_index: EventNoteSerializer.event_note_types_index,
-      educators_index: Educator.to_index,
-      access: student.latest_access_results,
-      iep_document: student.iep_document,
-      sections: serialize_student_sections_for_profile(student),
-      current_educator_allowed_sections: current_educator.allowed_sections.map(&:id),
-      attendance_data: {
-        discipline_incidents: student.discipline_incidents.order(occurred_at: :desc),
-        tardies: student.tardies.order(occurred_at: :desc),
-        absences: student.absences.order(occurred_at: :desc)
-      }
-    }
-    render 'shared/serialized_data'
+  def show_json
+    student = Student.find(params[:id])
+    render :json => show_data(student)
   end
 
   def restricted_notes
@@ -139,6 +157,49 @@ class StudentsController < ApplicationController
   end
 
   private
+
+  def show_data(student)
+    chart_data = StudentProfileChart.new(student).chart_data
+
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+  
+    current_educator = { }
+    allowed_sections = []
+
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+
+    {
+      current_educator: current_educator,
+      student: serialize_student_for_profile(student),          # Risk level, school homeroom, most recent school year attendance/discipline counts
+      feed: student_feed(student, restricted_notes: false),     # Notes, services
+      chart_data: chart_data,                                   # STAR, MCAS, discipline, attendance charts
+      dibels: student.student_assessments.by_family('DIBELS'),
+      service_types_index: ServiceSerializer.service_types_index,
+      event_note_types_index: EventNoteSerializer.event_note_types_index,
+      educators_index: Educator.to_index,
+      access: student.latest_access_results,
+      iep_document: student.iep_document,
+      sections: serialize_student_sections_for_profile(student),
+      current_educator_allowed_sections: allowed_sections.map(&:id),
+      attendance_data: {
+        discipline_incidents: student.discipline_incidents.order(occurred_at: :desc),
+        tardies: student.tardies.order(occurred_at: :desc),
+        absences: student.absences.order(occurred_at: :desc)
+      }
+    }
+  end
 
   def serialize_student_for_profile(student)
     student.as_json.merge({

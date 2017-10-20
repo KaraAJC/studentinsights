@@ -11,9 +11,32 @@ class ApplicationController < ActionController::Base
     force_ssl except: [:lets_encrypt_endpoint]
   end
 
-  before_action :redirect_domain!
-  before_action :authenticate_educator!  # Devise method, applies to all controllers.
-                                         # In this app 'users' are 'educators'.
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+  # before_action :redirect_domain!
+  # before_action :authenticate_educator!  # Devise method, applies to all controllers.
+  #                                        # In this app 'users' are 'educators'.
+
+
+  # danger
+  # danger
+  # danger
+  # danger
+  # danger
+
 
   # Return the homepage path, depending on the educator's role
   def homepage_path_for_role(educator)
