@@ -20,15 +20,15 @@ export default {
   // change event.
   changeTextValue: function($el, value) {
     $el.val(value);
-    React.addons.TestUtils.Simulate.change($el.get(0));
+    ReactTestUtils.Simulate.change($el.get(0));
     return undefined;
   },
 
   // Simulates opening the react-select dropdown and clicking the item
   // with `optionText`.
   changeReactSelect: function($selectEl, optionText) {
-    React.addons.TestUtils.Simulate.mouseDown($selectEl.find('.Select-arrow-zone').get(0));
-    React.addons.TestUtils.Simulate.focus($selectEl.find('input:last').get(0));
+    ReactTestUtils.Simulate.mouseDown($selectEl.find('.Select-arrow-zone').get(0));
+    ReactTestUtils.Simulate.focus($selectEl.find('input:last').get(0));
     $selectEl.find('.Select-option:contains(' + optionText + ')').click();
     return undefined;
   },

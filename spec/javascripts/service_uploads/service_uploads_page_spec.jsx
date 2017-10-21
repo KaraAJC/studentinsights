@@ -10,9 +10,9 @@ describe('ServiceUploadsPage', function() {
     }
   };
 
-  SpecSugar.withTestEl('integration tests', function() {
+  SpecSugar.withTestEl('integration tests', function(container) {
     it('renders the page with no service uploads', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const props = {
         serializedData: {
           serviceUploads: [],
@@ -27,7 +27,7 @@ describe('ServiceUploadsPage', function() {
     });
 
     it('renders the page with existing service upload', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const props = {
         serializedData: {
           serviceUploads: [
@@ -54,7 +54,7 @@ describe('ServiceUploadsPage', function() {
     });
 
     it('tolerates cancelling file upload', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const instance = helpers.renderInto(el, {
         serializedData: {
           serviceUploads: [],

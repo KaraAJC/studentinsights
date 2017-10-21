@@ -7,7 +7,7 @@
     displayName: 'HighchartsWrapper',
 
     componentDidMount: function(props, state) {
-      $(this._chartEl).highcharts(this.props);
+      Highcharts.chart(this._chartEl, this.props);
     },
 
     componentWillUnmount: function(props, state) {

@@ -11,11 +11,11 @@ module.exports = merge(common, {
   // See application.html.erb and ApplicationHelper#webpack_bundle
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public', 'dev')
+    path: path.resolve(__dirname, '../../public/dev')
   },
 
   plugins: [
-    new CleanWebpackPlugin(['public/dev'], { verbose: false })
+    new CleanWebpackPlugin(['../..public/dev'], { verbose: false })
   ]
 });
 /* eslint-disable no-undef */

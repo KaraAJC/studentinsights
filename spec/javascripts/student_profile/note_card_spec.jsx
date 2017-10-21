@@ -38,9 +38,9 @@ describe('NoteCard', function() {
     }
   };
 
-  SpecSugar.withTestEl('render', function() {
+  SpecSugar.withTestEl('render', function(container) {
     it('renders simple text', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       helpers.renderInto(el, {
         text: 'hello'
@@ -50,7 +50,7 @@ describe('NoteCard', function() {
     });
 
     it('renders number of revisions', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       helpers.renderInto(el, {
         text: 'hello',
@@ -61,7 +61,7 @@ describe('NoteCard', function() {
     });
 
     it('escapes HTML-meaningful characters in text', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       helpers.renderInto(el, {
         text: 'hello <script src="xss.js"></script>world'
@@ -71,7 +71,7 @@ describe('NoteCard', function() {
     });
 
     it('renders newlines as <br> tags', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       helpers.renderInto(el, {
         text: 'hello\nworld'
@@ -81,9 +81,9 @@ describe('NoteCard', function() {
     });
   });
 
-  SpecSugar.withTestEl('integration tests', function() {
+  SpecSugar.withTestEl('integration tests', function(container) {
     it('replaces HTML with newlines in saved text', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       const component = helpers.renderInto(el, {
         text: 'hello world'
@@ -101,7 +101,7 @@ describe('NoteCard', function() {
     });
 
     it('sanitizes undesirable HTML', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       const component = helpers.renderInto(el, {
         text: 'hello\nworld'

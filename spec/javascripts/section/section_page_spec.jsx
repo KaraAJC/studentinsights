@@ -28,9 +28,9 @@ describe('SectionPage', function() {
     currentEducator: { districtwide_access: false }
   };
 
-  SpecSugar.withTestEl('', function() {
+  SpecSugar.withTestEl('', function(container) {
     it('renders the correct section select', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       helpers.renderInto(el, props);
 
       const sectionSelect = $(el).find('#section-select option');
@@ -45,7 +45,7 @@ describe('SectionPage', function() {
     });
 
     it('renders the correct section header', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       helpers.renderInto(el, props);
 
       const headerInfo = $(el).find('#section-header-info');
@@ -59,7 +59,7 @@ describe('SectionPage', function() {
     });
 
     it('renders the correct roster headers', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       helpers.renderInto(el, props);
       
       const headers = $(el).find('#roster-header th');
@@ -69,7 +69,7 @@ describe('SectionPage', function() {
     });
 
     it('renders the correct roster data', function() {
-      const el = this.testEl;
+      const el = container.testEl;
 
       helpers.renderInto(el, props);
       const dataElements = $(el).find('#roster-data tr');
@@ -77,7 +77,8 @@ describe('SectionPage', function() {
       expect(dataElements.length).toEqual(2);
 
       const firstDataRows = dataElements.eq(0).find('td');
-      expect(firstDataRows[0].innerHTML).toEqual('<a href="/students/2">Duck, Donald</a>');
+      expect($(firstDataRows).text()).toEqual('Duck, Donald');
+      expect($(firstDataRows).attr('href')).toEqual('/students/2');
     });
   });
 });

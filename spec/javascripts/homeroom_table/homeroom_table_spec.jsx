@@ -11,7 +11,7 @@ describe('HomeroomTable', function() {
     }
   };
 
-  SpecSugar.withTestEl('high-level integration test', function() {
+  SpecSugar.withTestEl('high-level integration test', function(container) {
     it('renders the table', function() {
 
       const props = {
@@ -20,7 +20,7 @@ describe('HomeroomTable', function() {
         rows: students
       };
 
-      const el = this.testEl;
+      const el = container.testEl;
       helpers.renderInto(el, props);
 
       expect(el).toContainText('Minnie Poppins');

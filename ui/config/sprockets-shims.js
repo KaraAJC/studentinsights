@@ -16,3 +16,17 @@ window.ReactModal = ReactModal;
 
 import moment from 'moment';
 window.moment = moment;
+
+
+window.Cookies = {
+  getJSON() { return {}; }
+};
+
+window.ReactTestUtils = {
+  Simulate: {
+    change() {}
+  }
+};
+
+import Highcharts from 'highcharts';
+window.Highcharts = Highcharts;

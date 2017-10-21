@@ -101,9 +101,9 @@ describe('ProfileDetails', function() {
     }
   };
 
-  SpecSugar.withTestEl('', function() {
+  SpecSugar.withTestEl('', function(container) {
     it('renders everything in the right location', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       helpers.renderInto(el);
 
       // Is header here?
@@ -171,10 +171,10 @@ describe('ProfileDetails', function() {
     });
   });
   
-  SpecSugar.withTestEl('Sections', function() {
+  SpecSugar.withTestEl('Sections', function(container) {
 
     it('renders the correct roster headers', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const props = {
         currentEducatorAllowedSections: [1,2,3,4]
       };
@@ -188,7 +188,7 @@ describe('ProfileDetails', function() {
     });
 
     it('renders the correct roster data', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const props = {
         currentEducatorAllowedSections: [1,2,3,4]
       };
@@ -205,7 +205,7 @@ describe('ProfileDetails', function() {
     });
 
     it('renders section number based on educator access', function() {
-      const el = this.testEl;
+      const el = container.testEl;
       const props = {
         currentEducatorAllowedSections: [2,3,4]
       };
