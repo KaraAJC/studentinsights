@@ -12,7 +12,7 @@
     "dev": "NODE_ENV=development webpack --config ui/config/webpack.dev.js --watch",
     "build": "NODE_ENV=production webpack --config ui/config/webpack.prod.js",
     "start": "concurrently \"bundle exec rails s\" \"yarn run dev\"",
-    "jest": "jest --config jest.json",
+    "jest": "jest --config jest.json --watch",
     "test": "yarn run lint-cli && yarn run jest"
   },
   "dependencies": {
@@ -20,7 +20,8 @@
     "babel-runtime": "^6.26.0",
     "jquery": "^3.2.1",
     "lodash": "3.10.1",
-    "moment": "^2.19.1"
+    "moment": "^2.19.1",
+    "react-modal": "^3.0.4"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",

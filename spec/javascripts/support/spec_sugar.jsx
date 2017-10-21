@@ -1,17 +1,18 @@
 /* Sugar for common test setup and interactions */  
 export default {
   withTestEl: function(description, testsFn) {
+    const container = {};
     return describe(description, function() {
       beforeEach(function() {
-        this.testEl = $('<div id="test-el" />').get(0);
-        $('body').append(this.testEl);
+        container.testEl = $('<div id="test-el" />').get(0);
+        $('body').append(container.testEl);
       });
 
       afterEach(function() {
-        $(this.testEl).remove();
+        $(container.testEl).remove();
       });
 
-      testsFn.call(this);
+      testsFn.call(null, container);
     });
   },
 

@@ -3,8 +3,16 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 window.React = React;
+window.ReactDOM = ReactDOM;
+
+
+import ReactModal from 'react-modal';
+window.ReactModal = ReactModal;
+
 
 import moment from 'moment';
 window.moment = moment;
