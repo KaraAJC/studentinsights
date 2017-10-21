@@ -8,7 +8,6 @@ gem 'puma'
 
 gem 'activerecord-import'
 gem 'aws-sdk', '~> 2'
-gem 'browserify-rails'
 gem 'devise', '~> 4.3.0'
 gem 'devise_ldap_authenticatable'
 gem 'activemodel-serializers-xml'
