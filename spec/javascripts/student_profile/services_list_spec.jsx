@@ -53,24 +53,24 @@ describe('ServicesList', function() {
     it('renders message when no services', function() {
       const el = container.testEl;
       helpers.renderInto(el, { servicesFeed: helpers.emptyServicesFeed() });
-      expect(el.innerHTML).toContain('No services');
+      expect($(el).text()).toContain('No services');
     });
 
     it('renders everything on the happy path', function() {
       const el = container.testEl;
       helpers.renderInto(el, { servicesFeed: helpers.oneActiveServiceFeed() });
-      expect(el.innerHTML).toContain('Reading intervention');
-      expect(el.innerHTML).toContain('With');
-      expect(el.innerHTML).toContain('Started April 3, 2016');
-      expect(el.innerHTML).toContain('Discontinue');
+      expect($(el).text()).toContain('Reading intervention');
+      expect($(el).text()).toContain('With');
+      expect($(el).text()).toContain('Started April 3, 2016');
+      expect($(el).text()).toContain('Discontinue');
     });
 
     it('asks for confirmation before discontinuing', function() {
       const el = container.testEl;
       helpers.renderInto(el, { servicesFeed: helpers.oneActiveServiceFeed() });
       $(el).find('.btn').click();
-      expect(el.innerHTML).toContain('Confirm');
-      expect(el.innerHTML).toContain('Cancel');
+      expect($(el).text()).toContain('Confirm');
+      expect($(el).text()).toContain('Cancel');
     });
 
     it('shows a message when request in progress', function() {
@@ -95,8 +95,8 @@ describe('ServicesList', function() {
           discontinued: [discontinuedService]
         }
       });
-      expect(el.innerHTML).toContain('Ended');
-      expect(el.innerHTML).toContain('April 5, 2016');
+      expect($(el).text()).toContain('Ended');
+      expect($(el).text()).toContain('April 5, 2016');
     });
   });
 });

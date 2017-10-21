@@ -5,6 +5,7 @@ describe('PageContainer', function() {
   const merge = window.shared.ReactHelpers.merge;
   const ReactDOM = window.ReactDOM;
   const PageContainer = window.shared.PageContainer;
+  const ReactTestUtils = window.ReactTestUtils;
 
   const helpers = {
     findColumns: function(el) {
@@ -57,8 +58,8 @@ describe('PageContainer', function() {
       const $noteCard = $(el).find('.NotesList .NoteCard').first();
       const $text = $noteCard.find('.note-text');
       $text.html(uiParams.text);
-      React.addons.TestUtils.Simulate.input($text.get(0));
-      React.addons.TestUtils.Simulate.blur($text.get(0));
+      ReactTestUtils.Simulate.input($text.get(0));
+      ReactTestUtils.Simulate.blur($text.get(0));
     },
 
     recordServiceAndSave: function(el, uiParams) {
@@ -75,7 +76,7 @@ describe('PageContainer', function() {
       const el = container.testEl;
       helpers.renderInto(el);
 
-      expect(el.innerHTML).toContain('Daisy Poppins');
+      expect($(el).text()).toContain('Daisy Poppins');
       expect(helpers.findColumns(el).length).toEqual(5);
       expect($(el).find('.Sparkline').length).toEqual(9);
       expect($(el).find('.InterventionsDetails').length).toEqual(1);
@@ -93,8 +94,8 @@ describe('PageContainer', function() {
       helpers.renderInto(el);
 
       $(el).find('.btn.take-notes').click();
-      expect(el.innerHTML).toContain('What are these notes from?');
-      expect(el.innerHTML).toContain('Save notes');
+      expect($(el).text()).toContain('What are these notes from?');
+      expect($(el).text()).toContain('Save notes');
     });
 
     it('opens dialog when clicking Record Service button', function() {
@@ -102,8 +103,8 @@ describe('PageContainer', function() {
       helpers.renderInto(el);
 
       $(el).find('.btn.record-service').click();
-      expect(el.innerHTML).toContain('Who is working with Daisy?');
-      expect(el.innerHTML).toContain('Record service');
+      expect($(el).text()).toContain('Who is working with Daisy?');
+      expect($(el).text()).toContain('Record service');
     });
 
     it('can save notes for SST meetings, mocking the action handlers', function() {
@@ -146,18 +147,18 @@ describe('PageContainer', function() {
       component.onClickSaveService({
         providedByEducatorName: 'badinput'
       });
-      expect(el.innerHTML).toContain('Please use the form Last Name, First Name');
+      expect($(el).text()).toContain('Please use the form Last Name, First Name');
 
       component.onClickSaveService({
         providedByEducatorName: 'Teacher, Test'
       });
-      expect(el.innerHTML).toContain('Saving...');
+      expect($(el).text()).toContain('Saving...');
 
       // Name can also be blank
       component.onClickSaveService({
         providedByEducatorName: ''
       });
-      expect(el.innerHTML).toContain('Saving...');
+      expect($(el).text()).toContain('Saving...');
     });
 
     // TODO(kr) the spec helper here was reaching into the react-select internals,

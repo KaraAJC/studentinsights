@@ -200,8 +200,9 @@ describe('ProfileDetails', function() {
       expect(dataElements.length).toEqual(1);
 
       const firstDataRows = dataElements.eq(0).find('td');
-      expect(firstDataRows[0].innerHTML).toEqual('<a href="/sections/1">SOM-A</a>');
-      expect(firstDataRows[2].innerHTML).toEqual('75.8');
+      expect($(firstDataRows[0]).text()).toEqual('SOM-A');
+      expect($(firstDataRows[0]).attr('href')).toEqual('/sections/1');
+      expect($(firstDataRows[2]).text()).toEqual('75.8');
     });
 
     it('renders section number based on educator access', function() {
@@ -217,7 +218,7 @@ describe('ProfileDetails', function() {
       expect(dataElements.length).toEqual(1);
 
       const firstDataRows = dataElements.eq(0).find('td');
-      expect(firstDataRows[0].innerHTML).toEqual('<p>SOM-A</p>');
+      expect($(firstDataRows).text()).toEqual('SOM-A');
     });
   });
 });

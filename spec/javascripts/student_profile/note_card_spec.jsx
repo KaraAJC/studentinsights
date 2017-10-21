@@ -6,6 +6,7 @@ describe('NoteCard', function() {
   const ReactDOM = window.ReactDOM;
   const NoteCard = window.shared.NoteCard;
   const moment = window.moment;
+  const ReactTestUtils = window.ReactTestUtils;
 
   const helpers = {
     renderInto: function(el, props) {
@@ -28,8 +29,8 @@ describe('NoteCard', function() {
     editNoteAndSave: function(el, uiParams) {
       const $text = $(el).find('.note-text');
       $text.html(uiParams.html);
-      React.addons.TestUtils.Simulate.input($text.get(0));
-      React.addons.TestUtils.Simulate.blur($text.get(0));
+      ReactTestUtils.Simulate.input($text.get(0));
+      ReactTestUtils.Simulate.blur($text.get(0));
       return $text.html();
     },
 
@@ -57,7 +58,7 @@ describe('NoteCard', function() {
         numberOfRevisions: 1
       });
 
-      expect(el).toContainText('Revised 1 time');
+      expect($(el).text()).toContain('Revised 1 time');
     });
 
     it('escapes HTML-meaningful characters in text', function() {

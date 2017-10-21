@@ -23,7 +23,7 @@ describe('HomeroomTable', function() {
       const el = container.testEl;
       helpers.renderInto(el, props);
 
-      expect(el).toContainText('Minnie Poppins');
+      expect(el.innerHTML).toContain('Minnie Poppins');
       expect($(el).find('tr').length).toEqual(15);
     });
   });

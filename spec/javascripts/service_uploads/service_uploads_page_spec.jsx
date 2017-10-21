@@ -3,6 +3,7 @@ import SpecSugar from '../support/spec_sugar.jsx';
 describe('ServiceUploadsPage', function() {
   const ReactDOM = window.ReactDOM;
   const ServiceUploadsPage = window.shared.ServiceUploadsPage;
+  const ReactTestUtils = window.ReactTestUtils;
 
   const helpers = {
     renderInto: function(el, props) {
@@ -22,8 +23,8 @@ describe('ServiceUploadsPage', function() {
 
       helpers.renderInto(el, props);
 
-      expect(el).toContainText('Upload new services');
-      expect(el).toContainText('Confirm Upload');
+      expect($(el).text()).toContain('Upload new services');
+      expect($(el).text()).toContain('Confirm Upload');
     });
 
     it('renders the page with existing service upload', function() {
@@ -49,8 +50,8 @@ describe('ServiceUploadsPage', function() {
 
       helpers.renderInto(el, props);
 
-      expect(el).toContainText('bulk_upload.csv'); // Renders the file name
-      expect(el).toContainText('Extra Tutoring');  // Renders the service type name
+      expect($(el).text()).toContain('bulk_upload.csv'); // Renders the file name
+      expect($(el).text()).toContain('Extra Tutoring');  // Renders the service type name
     });
 
     it('tolerates cancelling file upload', function() {
@@ -63,7 +64,7 @@ describe('ServiceUploadsPage', function() {
       });
 
       const fileInputEl = $(el).find('input[type=file]').get(0);
-      React.addons.TestUtils.Simulate.change(fileInputEl);
+      ReactTestUtils.Simulate.change(fileInputEl);
       expect(instance.state.formData.file_name).toEqual(undefined);
     });
 

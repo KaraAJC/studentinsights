@@ -156,7 +156,7 @@ import _ from 'lodash';
         if (obj.performance_level === null) return;
 
         const cleanedDate = obj.date_taken.split('T')[0];
-        const parsedDate = moment(cleanedDate).toDate();
+        const parsedDate = moment.utc(cleanedDate, 'YYYY-MM-DD').toDate();
 
         events.push({
           type: 'DIBELS',
