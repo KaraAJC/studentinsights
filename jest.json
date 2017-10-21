@@ -6,5 +6,6 @@
     "**/notes_details_spec.jsx"
   ],
   "setupFiles": [
+    "./ui/config/setupTests.js"
   ]
 }

@@ -10,10 +10,14 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = merge(common, {
   devtool: 'source-map',
+
+  // Rails looks in this particular place
+  // See application.html.erb and ApplicationHelper#webpack_bundle
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'public', 'build')
   },
+
   plugins: [
     new CleanWebpackPlugin(['public/build']),
     new UglifyJSPlugin({sourceMap: true}),
