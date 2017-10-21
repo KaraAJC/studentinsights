@@ -1,7 +1,5 @@
-const path = require('path');
-
-
-module.exports = {
+/* eslint-disable no-undef */
+module.exports = { 
   entry: {
     bundle: './ui/index.js'
   },
@@ -25,3 +23,4 @@ module.exports = {
     ]
   }
 };
+/* eslint-disable no-undef */

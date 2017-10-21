@@ -18,12 +18,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require highcharts
 //= require js.cookie
 //= require classList
-//= require d3.v3.min.js
-//= require moment.js
-//= require sanitize
 
 // provided by react-rails gem, configured in config/initializers/assets.rb
 //= require react

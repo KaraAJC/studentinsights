@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const webpack = require('webpack');
 const common = require('./webpack.common.js');
@@ -9,12 +10,16 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = merge(common, {
   devtool: 'source-map',
+
+  // Rails looks in this particular place
+  // See application.html.erb and ApplicationHelper#webpack_bundle
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'public', 'build')
+    path: path.resolve(__dirname, '../../public/build')
   },
+
   plugins: [
-    new CleanWebpackPlugin(['public/build']),
+    new CleanWebpackPlugin(['../../public/build']),
     new UglifyJSPlugin({sourceMap: true}),
     new webpack.DefinePlugin({
       'process.env': {
@@ -25,3 +30,4 @@ module.exports = merge(common, {
     new ManifestPlugin({fileName: 'manifest.json' })
   ]
 });
+/* eslint-disable no-undef */
