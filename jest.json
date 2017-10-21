@@ -2,7 +2,8 @@
   "testMatch": [
     "**/__tests__/**/*.js?(x)",
     "**/?(*.)(spec|test).js?(x)",
-    "**/?(*.)(_spec).js?(x)"
+    "fffff**/_spec.js?(x)",
+    "**/notes_details_spec.jsx"
   ],
   "setupFiles": [
   ]
