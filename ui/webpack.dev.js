@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -13,3 +14,4 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['public/dev'], { verbose: false })
   ]
 });
+/* eslint-disable no-undef */

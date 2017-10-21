@@ -1,0 +1,9 @@
+{
+  "testMatch": [
+    "**/__tests__/**/*.js?(x)",
+    "**/?(*.)(spec|test).js?(x)",
+    "**/?(*.)(_spec).js?(x)"
+  ],
+  "setupFiles": [
+  ]
+}

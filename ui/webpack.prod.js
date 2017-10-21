@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const webpack = require('webpack');
 const common = require('./webpack.common.js');
@@ -25,3 +26,4 @@ module.exports = merge(common, {
     new ManifestPlugin({fileName: 'manifest.json' })
   ]
 });
+/* eslint-disable no-undef */
